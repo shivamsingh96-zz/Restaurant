@@ -1,0 +1,34 @@
+<div class="login" ng-controller="loginController">
+		<div class="login-form">
+			<h3> Login </h3>
+        <form name="loginForm">
+					<!--The form tag has some attributes that we can use to send information to the server, without writing any JavaScript!-->
+			<div class="form-group">
+				<label for="user-email">Email address</label>
+				 <!--The label tag is used to show the name of an input field-->
+				<!--Inside the 'for' attribute, we write the 'id' of the input we want to link with our label tag-->
+
+				<input type="email" class="form-control" id="user-email" placeholder="Email" name="email"
+				ng-model="email" required="">
+				<!-- ng-model creates a model called 'email' and links its value with the form input value.-->
+
+			</div>
+			<div class="form-group">
+				<label for="user-password">Password</label>
+				<input type="password" class="form-control" id="user-password" placeholder="Password" name="password" required="" ng-model="user.password" ng-minlength="6" ng-maxlength="15">
+				<div ng-show="loginForm.password.$error.minlength">
+				Password must be at least 6 characters long
+				</div>
+				<div ng-show="loginForm.password.$error.maxlength">
+				Password must be at most 15 characters long
+				</div>
+				<div ng-show="loginForm.password.$error.required">
+				Please enter your super secret ninja password
+				</div>
+			</div>
+			<button type="submit" class="btn btn-default" ng-disabled="loginForm.$invalid"ng-click="goToHome()">Login</button>
+			<!--Whenever the element that ng-click is added to is clicked, angular calls the function we have defined in the quotes-->
+			<div id="abc">Welcome here {{email}}</div> <!--same name you are given in ng-model the same name you write in the curly braces this is known as Data-branding-->
+		</form>
+        </div>
+    </div>
