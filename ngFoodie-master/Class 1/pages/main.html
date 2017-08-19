@@ -1,4 +1,5 @@
 <div class="main" ng-controller="mainController">
+  <!--ng-controller links our HTMl code(<div) with the controller we just made, now this complete div is controlled by the controller. mainController is the name of the controller we have given in JS as first argument-->
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -14,16 +15,13 @@
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                      <li><a href="#!/home">Home</a></li>
-                      <!--'#!' move to different views-->
-                      <li><a href="#!/about" >About Us</a></li>
-
-                      <li><a href="#">Order Online</a></li>
-                      <li><a href="#!/">Logout</a></li>
-                    </ul>
-
-
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#!/myModule">myModule</a></li>
+                  <li><a href="#!/home">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Order Online</a></li>
+                  <li><a href="#!/">Logout</a></li>
+                </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
@@ -34,6 +32,7 @@
 		<form>
 		<div class="input-wrapper">
 		  <input type="text" class="form-control" placeholder="Search..." ng-model="query">
+      <!-- model "query" used as a filter to search in the restaurant div-->
 		</div>
 		<button type="submit" class="btn btn-default" >Search</button>
 		</form>
@@ -46,8 +45,10 @@
 
 
 				<div ng-repeat="restaurant in restaurants | filter:query" class="restaurant">
-          <!-- ng-repeat directive is used to loop over an array/object and for each value inside it, do something.-->
-          <!-- yaha par har cheez k liye div bana di gayi h-->
+          <!--'restaurant' is a temporary variable that is being created
+          ng-repeat act as a 'for loop'.for each  iteration of the loop, it has the value of one element {object} in the array
+        'filter:query' we are specifying the name of model after colon where the user will type the search Query
+      It takes the list of restaurants and only displays those that match the user query -->
     <div class="rest-wrapper">
         <div class="image">
             <img ng-src="{{restaurant.image}}" height="100" width="100">
@@ -75,17 +76,24 @@
             <div><small>Cuisines:</small></div>
             <div><small>Cost for Two: </small></div>
             <div><small>Hours:</small></div>
-        </div>
+            <div ng-if="restaurant.bestDish"><small>Recommended: </small></div>
+            </div>
+
         <div class="value">
             <div>{{restaurant.cuisines}}</div>
-            <div>₹{{restaurant.cost | number}}</div>
-            <div>{{restaurant.hours}}</div>
+            <div>₹{{restaurant.cost | number}}</div> <!--The | symbol denotes filter. It format the data that it appears differently to the user-->
+           <div>{{restaurant.hours}}</div>
+           <div class="bestDish" ng-if="restaurant.bestDish">
+                  <span>{{restaurant.bestDish.name}} </span>
+                  <div ng-click="getIngredients(restaurant.bestDish.image)" class="button">Get Ingredients</div>
+            </div>
+
         </div>
     </div>
     <div class="rating">
         <strong>{{restaurant.vote}}</strong>
     </div>
-</div>
+
         </div>
 
     </div>

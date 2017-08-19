@@ -1,0 +1,53 @@
+<div class="myDish" ng-controller="dishController">
+<nav class="navbar navbar-default navbar-fixed">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#!/home">Foodie</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+<li><a href="#!/myModule">myModule</a></li>
+<li><a href="#!/home">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Order Online</a></li>
+<li><a href="#!/">Logout</a></li>
+</ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div class="restaurant" ng-if="dish.name">
+  <div class="rest-wrapper">
+    <div class="image">
+        <img ng-src="{{dish.image}}" height="100" width="100">
+    </div>
+    <div class="rest-name">
+<strong>{{dish.name}}</strong>
+</div>
+  </div>
+<div class="rest-extra">
+    <div class="value">
+      <div class="bestDish">
+        <span>{{dish.name}}</span>
+        <div ng-click="getIngredients(dish.image)" class="button">Get Ingredients</div>
+  </div>
+    </div>
+</div>
+<div ng-if="ingredients">
+<ol>
+<li ng-repeat="ingredient in ingredients">
+{{ingredient}}
+</li>
+</ol>
+</div>
+</div>
+</div>

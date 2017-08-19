@@ -1,0 +1,48 @@
+<!--this defines controller for myModule-->
+<div class="myModule" ng-controller="moduleController">
+<!--This is nav bar-->
+    <nav class="navbar navbar-default navbar-fixed">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#!/home">Foodie</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+  <li><a href="#!/myModule">myModule</a></li>
+  <li><a href="#!/home">Home</a></li>
+  <li><a href="#">About</a></li>
+  <li><a href="#">Order Online</a></li>
+  <li><a href="#!/">Logout</a></li>
+</ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="back">
+        <strong><p>Find what should you eat!</p></strong>
+    </div>
+    <div ng-repeat="dish in dishes | filter:query" class="restaurant">
+       <div class="rest-wrapper">
+         <div class="image">
+             <img ng-src="{{dish.image}}" height="100" width="100">
+         </div>
+         <div class="rest-info">
+           <div class="rest-category">
+              <small>{{dish.category}} </small>
+           </div>
+         <div class="rest-name">
+ <a ng-href="#!/dish/{{dish.id}}"><strong>{{dish.name}}</strong></a>
+</div>
+<div>
+       </div>
+    </div>
+  </div>
